@@ -1,0 +1,44 @@
+doctype html
+html
+  head
+    title FCC Voting App
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css', rel='stylesheet', media='screen')
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons", rel='stylesheet')
+  body
+    nav
+      .nav-wrapper
+        a.brand-logo(href="/") Voting App
+        ul.right.hide-on-med-and-down#nav-mobile
+          if !user
+            li 
+              a(href='/login') 
+                i.material-icons.medium.left lock_open
+                |Login
+            li
+              a(href='/signup') 
+                i.material-icons.medium.left account_circle
+                |Signup
+          if user
+            li
+              a.waves-effect.waves-light.btn(href='/polls/new') New poll
+            li
+              a(href='/polls/my') My Polls
+            li 
+              a(href='/profile')
+                i.material-icons.medium.left account_circle
+                =user.local.email
+            li
+              a(href='/logout') 
+                i.material-icons.medium.left lock
+                |Logout
+    .container
+      block content
+
+  script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js')
+  //- show any messages that come back with authentication
+  if message && message.length > 0
+    script.
+      $(() => Materialize.toast('#{message}'))
+  block script

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= question
+  a.waves-effect.waves-light.btn(href="/polls/result/" + _id) Results
+  ul.collection
+    each option, index in options
+      li.collection-item
+        a.black-text(href='/polls/vote/' + _id + '/' + index)
+          i.material-icons.green-text check
+          = option.text + ' (Votes: ' + option.votes + ')'
+  if user
+    h4 Or you can add new option
+    //- Another option FORM 
+    form(action="/polls/" + _id, method="post")
+      .row
+        .input-field.col.s12
+          input#option(name="option", type="text", placeholder="Pike")
+          label(for='question') New option
+      button.waves-effect.waves-light.btn(type="submit") Add
+  h4 Link for this poll to share
+  a(href='/polls/' + _id) Link
+    
+  
+

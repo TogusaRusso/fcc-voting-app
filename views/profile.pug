@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .container
+    .page-header.text-center
+      h1
+        span.fa.fa-anchor
+        |Profile Page
+      a.btn.btn-default.btn-sm(href="/logout") Logout
+    .row
+      .col.s12.m6
+        .card.blue-grey.darken-1
+          .card-content.white-text
+            span.card-title 
+              i.material-icons.left account_circle
+              |  Local
+            p 
+              strong id
+              = ': ' + user._id
+            p 
+              strong email
+              = ': ' + user.local.email

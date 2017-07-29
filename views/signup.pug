@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1
+    i.material-icons.medium.left account_circle
+    |Signup
+  //- SIGNUP FORM 
+  form(action="/signup", method="post")
+    .row
+      .input-field.col.s12
+        input.validate#email(name="email", type="email")
+        label(for='email') Email
+    .row
+      .input-field.col.s12
+        input.validate#password(name="password", type="password")
+        label(for='password') Password
+    button.waves-effect.waves-light.btn(type="submit") Signup

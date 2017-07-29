@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1 Polls
+  ul.collection
+    each poll in polls
+      li.collection-item
+        a.black-text(href='/polls/' + poll._id)= poll.question
+        if user && poll.createdBy == user.local.email
+          a(href='/polls/delete/' + poll._id)
+            i.material-icons.red-text.right delete

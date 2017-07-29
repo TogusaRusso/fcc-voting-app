@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 New Poll
+  //- POLL FORM 
+  form(action="/polls/new", method="post")
+    .row
+      .input-field.col.s12
+        input#question(name="question", type="text", placeholder="Who's yours favorite capitain?")
+        label(for='question') Question
+    .row
+      .input-field.col.s12
+        input#option1(name="option1", type="text", placeholder='Kirk')
+        label(for='option1') First option
+    .row
+      .input-field.col.s12
+        input#option2(name="option2", type="text", placeholder='Picard')
+        label(for='option2') Second option
+    button.waves-effect.waves-light.btn(type="submit") Create
